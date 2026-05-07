@@ -22,12 +22,22 @@
             <div class="note-card" th:each="memo : ${memos}">
                 <div class="note-card-header">
                     <h3 class="note-card-title" th:text="${memo.title}">タイトル</h3>
+					<!-- テンプレート修正（新規作成・編集・一覧・詳細に優先度表示） -->
+					<div
+						th:if="${memo.priority.name() == '高'}"
+						class="priority-pill high active">高</div>
+					<div
+						th:if="${memo.priority.name() == '中'}"
+						class="priority-pill medium active">中</div>
+					<div
+						th:if="${memo.priority.name() == '低'}"
+						class="priority-pill low active">低</div>
                 </div>
                 <div class="note-card-content">
                     <p class="note-card-text" th:text="${memo.content}">内容</p>
                 </div>
                 <div class="note-card-footer">
-                    <p class="note-date" th:text="${#temporals.format(memo.createdAt, 'yyyy/MM/dd HH:mm')}">日付</p>
+                    <p class="note-date" th:text="${#temporals.format(memo.updatedAt, 'yyyy/MM/dd HH:mm')}">日付</p>
                     <div class="note-actions">
                         <a th:href="@{|/memo/detail/${memo.id}|}" class="btn btn-primary">詳細</a>
                         <a th:href="@{|/memo/delete/${memo.id}|}" class="btn btn-danger">
