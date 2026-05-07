@@ -18,6 +18,16 @@
         <div class="note-card note-card-large">
             <div class="note-card-header">
                 <h2 class="note-card-title" th:text="${memo.title}">タイトル</h2>
+				<!-- テンプレート修正（新規作成・編集・一覧・詳細に優先度表示） -->
+				<div
+					th:if="${memo.priority.name() == '高'}"
+					class="priority-pill high active">高</div>
+				<div
+					th:if="${memo.priority.name() == '中'}"
+					class="priority-pill medium active">中</div>
+				<div
+					th:if="${memo.priority.name() == '低'}"
+					class="priority-pill low active">低</div>
             </div>
             <div class="note-card-content">
                 <p class="note-card-text" th:text="${memo.content}">本文</p>
