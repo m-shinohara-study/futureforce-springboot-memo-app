@@ -26,6 +26,11 @@
             <a th:href="@{/memo/new}" class="btn btn-primary">
                 <i class="ri-add-circle-line"></i> 新規メモ
             </a>
+			<div style="text-align: right;">
+			    <form th:action="@{/admin/logout}" method="post">
+			        <button type="submit" class="btn btn-outline">ログアウト</button>
+			    </form>
+			</div>
         </div>
 
         <div class="notes-grid">

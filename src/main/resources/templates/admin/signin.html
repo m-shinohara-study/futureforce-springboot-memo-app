@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>ログイン画面</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1 class="app-title">ログインする</h1>
+        <div class="header">
+			<form th:action="@{/admin/signin}" method="post">
+				<div th:if="${param.error}" class="error-message">
+					メールアドレスまたはパスワードが正しくありません。
+				</div>
+				<input
+					type="text"
+					name="username"
+					placeholder="メールアドレス"
+					required>
+				<input
+					type="password"
+					name="password"
+					placeholder="パスワード"
+					required>
+				<button type="submit" class="btn btn-primary">ログイン</button>
+			</form>
+            <a th:href="@{/admin/signup}" class="btn btn-primary">
+                新規登録
+            </a>
+        </div>
+    </div>
+    <script th:src="@{/js/common.js}"></script>
+</body>
+
+</html>
